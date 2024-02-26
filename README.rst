@@ -48,7 +48,7 @@
 Для запуска clang-format::
 
   cd repo
-  find . -iname "*.h" -o -iname "*.hpp" -o -iname "*.cpp" -exec clang-format --dry-run --Werror -style=file {} +
+  find . -not -path "./build/*" \( -iname "*.h" -o -iname "*.hpp" -o -iname "*.cpp" \) -exec clang-format --dry-run --Werror -style=file {} +
 
 Для сборки и запуска тестов без санитайзеров::
 
