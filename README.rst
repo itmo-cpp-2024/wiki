@@ -30,7 +30,7 @@
 Запуск докера::
 
   docker run --rm  \
-           --volume PATH_TO_YOUR_REPO:/home/ubuntu/repo:ro   \
+           --volume PATH_TO_YOUR_REPO:/home/ubuntu/repo:rw   \
            --volume PATH_TO_CONAN_CACHE:/home/ubuntu/.conan2/:rw \
            -it cpp-build
 
@@ -47,11 +47,12 @@
 
 Для запуска clang-format::
 
-  cd repo
+  cd repo/src
   find . -iname "*.h" -o -iname "*.hpp" -o -iname "*.cpp" -exec clang-format --dry-run --Werror -style=file {} +
 
 Для сборки и запуска тестов без санитайзеров::
 
+  cd repo
   mkdir build
   cmake -S. -Bbuild -DUSE_CLANG_TIDY=TRUE -DTESTS_BUILD_TYPE=NONE -DCMAKE_BUILD_TYPE=Release
   cmake --build build
@@ -59,6 +60,7 @@
 
 Для сборки и запуска тестов c ASAN::
 
+  cd repo
   mkdir build_ASAN
   cmake -S. -Bbuild_ASAN -DTESTS_BUILD_TYPE=ASAN -DCMAKE_BUILD_TYPE=Debug
   cmake --build build_ASAN
