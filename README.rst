@@ -53,14 +53,14 @@
 Для сборки и запуска тестов без санитайзеров::
 
   mkdir build
-  cmake -S. -Bbuild -DUSE_CLANG_TIDY=TRUE -DTESTS_BUILD_TYPE=NONE -DCMAKE_BUILD_TYPE=Release
+  cmake -Srepo -Bbuild -DUSE_CLANG_TIDY=TRUE -DTESTS_BUILD_TYPE=NONE -DCMAKE_BUILD_TYPE=Release
   cmake --build build
   ./build/tests/runUnitTests
 
 Для сборки и запуска тестов c ASAN::
 
   mkdir build_ASAN
-  cmake -S. -Bbuild_ASAN -DTESTS_BUILD_TYPE=ASAN -DCMAKE_BUILD_TYPE=Debug
+  cmake -Srepo -Bbuild_ASAN -DTESTS_BUILD_TYPE=ASAN -DCMAKE_BUILD_TYPE=Debug
   cmake --build build_ASAN
   ./build_ASAN/tests/runUnitTests
 
